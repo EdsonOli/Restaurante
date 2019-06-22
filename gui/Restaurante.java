@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -24,9 +25,6 @@ public class Restaurante extends JFrame {
 	private JTextField loginField;
 	private JPasswordField passwordField;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -40,10 +38,9 @@ public class Restaurante extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public Restaurante() {
+		setResizable(false);
 		setBackground(new Color(255, 255, 255));
 		setTitle("Cabra de Peste");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,10 +84,14 @@ public class Restaurante extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(loginField.getText().isEmpty() || passwordField.getText().isEmpty()) 
 				{
-					JOptionPane.showMessageDialog(null, "Preencha todas as informações necessarias!");
+					JOptionPane.showMessageDialog(null, "Preencha todas as informaÃ§Ãµes necessarias!");
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Bem vindo " + loginField.getText());
+					JGestao.start();
+					setVisible(false);
+					dispose();
+					
 				}
 			}
 		});
