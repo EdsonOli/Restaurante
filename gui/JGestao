@@ -44,17 +44,12 @@ public class JGestao extends JFrame {
 	private JTextField ID2TextField;
 	private JPanel PainelAtivo;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void start() {
 		JGestao frame = new JGestao();
 		frame.setVisible(true);
 	}
 
-	/**
-	 * Create the frame.
-	 */
+
 	public JGestao() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
