@@ -35,6 +35,12 @@ import java.awt.Panel;
 import javax.swing.JTextField;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import javax.swing.JList;
+import javax.swing.ListSelectionModel;
+import javax.swing.AbstractListModel;
+import javax.swing.JTextPane;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class JGestao extends JFrame {
 	private JTextField nomeTextField;
@@ -43,14 +49,22 @@ public class JGestao extends JFrame {
 	private JTextField nome2TextField;
 	private JTextField ID2TextField;
 	private JPanel PainelAtivo;
+	private JTextField nome3TextField;
+	private JTextField ID3TextField;
 
+	/**
+	 * Launch the application.
+	 */
 	public static void start() {
 		JGestao frame = new JGestao();
 		frame.setVisible(true);
 	}
 
-
+	/**
+	 * Create the frame.
+	 */
 	public JGestao() {
+		getContentPane().setBackground(new Color(224, 255, 255));
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 500);
@@ -65,6 +79,75 @@ public class JGestao extends JFrame {
 		JMenu mnFuncionarios = new JMenu("Funcionarios");
 		menuBar.add(mnFuncionarios);
 		mnFuncionarios.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JPanel promocaoPanel = new JPanel();
+		promocaoPanel.setBackground(new Color(224, 255, 255));
+		promocaoPanel.setBounds(85, 69, 409, 327);
+		getContentPane().add(promocaoPanel);
+		promocaoPanel.setLayout(null);
+		promocaoPanel.setVisible(false);
+		
+		JLabel promocaoLabel = new JLabel("Altera\u00E7\u00E3o de Cargo");
+		promocaoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		promocaoLabel.setFont(new Font("Arial", Font.BOLD, 18));
+		promocaoLabel.setBounds(115, 28, 180, 22);
+		promocaoPanel.add(promocaoLabel);
+		
+		JButton btnProm = new JButton("Alterar");
+		btnProm.setBounds(159, 256, 90, 23);
+		promocaoPanel.add(btnProm);
+		
+		JLabel lblNome3 = new JLabel("Nome:");
+		lblNome3.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNome3.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblNome3.setBounds(37, 136, 56, 19);
+		promocaoPanel.add(lblNome3);
+		
+		nome3TextField = new JTextField();
+		nome3TextField.setEditable(false);
+		nome3TextField.setFont(new Font("Arial", Font.PLAIN, 16));
+		nome3TextField.setColumns(10);
+		nome3TextField.setBounds(103, 135, 271, 20);
+		promocaoPanel.add(nome3TextField);
+		
+		JLabel label = new JLabel("ID:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setFont(new Font("Arial", Font.PLAIN, 16));
+		label.setBounds(37, 88, 56, 19);
+		promocaoPanel.add(label);
+		
+		ID3TextField = new JTextField();
+		ID3TextField.setToolTipText("");
+		ID3TextField.setFont(new Font("Arial", Font.PLAIN, 16));
+		ID3TextField.setColumns(10);
+		ID3TextField.setBounds(103, 87, 90, 20);
+		promocaoPanel.add(ID3TextField);
+		
+		JLabel lblCargo3 = new JLabel("Novo Cargo:");
+		lblCargo3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCargo3.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblCargo3.setBounds(10, 179, 90, 19);
+		promocaoPanel.add(lblCargo3);
+		
+		JComboBox cargoComboBox = new JComboBox();
+		cargoComboBox.setFont(new Font("Arial", Font.PLAIN, 12));
+		cargoComboBox.setModel(new DefaultComboBoxModel(new String[] {"Cozinheiro", "Gar\u00E7om", "Limpeza", "Gerente"}));
+		cargoComboBox.setBounds(103, 180, 90, 20);
+		promocaoPanel.add(cargoComboBox);
+		
+		JButton btnProcurar = new JButton("Procurar");
+		btnProcurar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(ID3TextField.getText().equals("121984")) {
+					nome3TextField.setText("Isaac Joas Bernardes de Lima");
+				}
+				else {
+					nome3TextField.setText("Funcionario não encontrado");
+				}
+			}
+		});
+		btnProcurar.setBounds(203, 87, 95, 20);
+		promocaoPanel.add(btnProcurar);
 		
 		JPanel efetivarPanel = new JPanel();
 		efetivarPanel.setEnabled(false);
@@ -203,8 +286,19 @@ public class JGestao extends JFrame {
 		});
 		mnFuncionarios.add(btnDemitir);
 		
-		JButton btnDarPromoo = new JButton("Dar promo\u00E7\u00E3o");
-		mnFuncionarios.add(btnDarPromoo);
+		JButton btnAlterarCargo = new JButton("Alterar Cargo");
+		btnAlterarCargo.setForeground(Color.BLACK);
+		btnAlterarCargo.setBackground(Color.WHITE);
+		btnAlterarCargo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				PainelAtivo.setVisible(false);
+				PainelAtivo.setEnabled(false);
+				PainelAtivo = promocaoPanel;
+				promocaoPanel.setVisible(true);
+				promocaoPanel.setEnabled(true);
+			}
+		});
+		mnFuncionarios.add(btnAlterarCargo);
 		
 		JButton btnDarAumento = new JButton("Aumentar Salario");
 		mnFuncionarios.add(btnDarAumento);
