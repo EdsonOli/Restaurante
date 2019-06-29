@@ -72,6 +72,14 @@ public class Funcionario
 		return text;
 	}
 	
+	public boolean equals(Funcionario b)
+	{
+		if(ID == b.getID()) {
+			return true;
+		}
+		return false;
+	}
+	
 	
 	
 }
