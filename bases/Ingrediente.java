@@ -1,6 +1,8 @@
 package bases;
 
-public class Ingrediente
+import java.io.Serializable;
+
+public class Ingrediente implements Serializable
 {
 	private String nome;
 	private int quantidade;
@@ -33,6 +35,11 @@ public class Ingrediente
 		preco = novoPreco;
 	}
 
+	public void setPreco(double novoPreco)
+	{
+		this.preco = novoPreco;
+	}
+	
 	public void comprarPorQuantidade(double dinheiro, int qtd)
 	{
 		if(qtd >= 1 && dinheiro >= preco)
@@ -45,7 +52,7 @@ public class Ingrediente
 					quantidade++;
 				}
 				else{
-					System.out.printf("Dinheiro insuficiente! S� foram comprados %d ingredientes", i);
+					System.out.printf("Dinheiro insuficiente! Só foram comprados %d ingredientes", i);
 					break;
 				}
 			}
@@ -80,6 +87,15 @@ public class Ingrediente
 			return true;
 		}
 	}
-
+	
+	public String toString() {
+		String msg = null;
+		
+		msg = "Nome: " + this.nome + "\nQuantidade: " 
+		+ this.quantidade + "\nPreço: R$ " + this.preco + "\n\n";
+		
+		return msg;
+				
+	}
 
 }
