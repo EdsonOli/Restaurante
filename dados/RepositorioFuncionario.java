@@ -1,15 +1,14 @@
 package dados;
 
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import bases.Cargo;
+import bases.Funcionario;
 
 public class RepositorioFuncionario implements Serializable, Arquivos
 {
@@ -22,7 +21,13 @@ public class RepositorioFuncionario implements Serializable, Arquivos
 	}
 	
 	public void adicionarFuncionario(String nome, int rg, Cargo cargo) {
+		//ATUALIZAR LISTA
+		lerLista();
+		
 		Funcionarios.add(new Funcionario(nome, rg, cargo));
+		
+		//ATUALIZAR ARQUIVO
+		gravaLista();
 	}
 
 	public void gravaLista(){
@@ -80,7 +85,7 @@ public class RepositorioFuncionario implements Serializable, Arquivos
 		
 		else
 		{
-			JOptionPane.showMessageDialog(null, "Funcionário não existe", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "FuncionÃ¡rio nÃ£o existe", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}*/
 	
