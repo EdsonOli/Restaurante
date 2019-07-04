@@ -24,6 +24,13 @@ public class Ingrediente implements Serializable
 	{
 		return quantidade;
 	}
+	
+
+	public void setQuantidade(int quantidade)
+	{
+		if(quantidade >= 0)
+			this.quantidade = quantidade;
+	}
 
 	public double getPreco()
 	{
@@ -32,12 +39,8 @@ public class Ingrediente implements Serializable
 
 	public void setPreco(double novoPreco)
 	{
-		preco = novoPreco;
-	}
-
-	public void setPreco(double novoPreco)
-	{
-		this.preco = novoPreco;
+		if(novoPreco > 0)
+			this.preco = novoPreco;
 	}
 	
 	public void comprarPorQuantidade(double dinheiro, int qtd)
@@ -52,7 +55,7 @@ public class Ingrediente implements Serializable
 					quantidade++;
 				}
 				else{
-					System.out.printf("Dinheiro insuficiente! Só foram comprados %d ingredientes", i);
+					System.out.printf("Dinheiro insuficiente! SÃ³ foram comprados %d ingredientes", i);
 					break;
 				}
 			}
@@ -92,7 +95,7 @@ public class Ingrediente implements Serializable
 		String msg = null;
 		
 		msg = "Nome: " + this.nome + "\nQuantidade: " 
-		+ this.quantidade + "\nPreço: R$ " + this.preco + "\n\n";
+		+ this.quantidade + "\nPreÃ§o: R$ " + this.preco + "\n\n";
 		
 		return msg;
 				
