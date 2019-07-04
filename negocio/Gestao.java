@@ -14,7 +14,7 @@ import bases.Funcionario;
 
 public class Gestao 
 { 
-	/*os comentários sao um metodo alternativo de escrever no arquivo
+	/*os comentÃ¡rios sao um metodo alternativo de escrever no arquivo
 	
 	
 	Scanner lerNome = new Scanner(System.in);
@@ -45,17 +45,12 @@ public class Gestao
 		if(!jaCadastrado)
 		{
 			try 
-			{
-				FileWriter dados = new FileWriter ("Dados dos funcionários.txt");
-				PrintWriter registrar = new PrintWriter(dados);
-				registrar.println(novoF.toString() + "\n\n");
-				dados.close();
-				
-				repFunc.adicionarFuncionario(novoF);
+			{				
+				repFunc.adicionarFuncionario(novoF.getNome(), novoF.getID(), novoF.getCargo());
 				JOptionPane.showMessageDialog(null, "Funcionario cadastrado com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
 			}
 			
-			catch (IOException e) 
+			catch (Exception e) 
 			{
 				e.printStackTrace();
 			}
@@ -64,7 +59,7 @@ public class Gestao
 		
 		else
 		{
-			JOptionPane.showMessageDialog(null, "Funcionario já está cadastrado", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Funcionario jÃ¡ estÃ¡ cadastrado", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
