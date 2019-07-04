@@ -1,5 +1,5 @@
 package dados;
-import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -15,22 +15,28 @@ public class RepositorioIngredientes implements Serializable {
 	
 	
 	public void adicionarIngrediente(Ingrediente a) 
-	{
+	{		
+		//ATUALIZAR LISTA
+		lerLista();
+		
 		repositorioIngrediente.add(a);
 		
 		//ATUALIZAR ARQUIVO
 		gravaLista();
-		lerLista();
+		
 	}
 	
 	
 	public void removerIngrediente(Ingrediente b)
 	{
+		//ATUALIZAR LISTA
+		lerLista();
+		
 		repositorioIngrediente.remove(b);
 		
 		//ATUALIZAR ARQUIVO
 		gravaLista();
-		lerLista();
+		
 	}
 	
 	
