@@ -30,31 +30,16 @@ public class RepositorioFuncionario implements Serializable, Arquivos
 		gravaLista();
 	}
 
-	//marco: nao vi essa parte aq pq for each n eh cmg
-	
-	/*public void removerFuncionario(Funcionario funcionarioR)
+	public void removerFuncionario(Funcionario f2)
 	{
-		boolean Cadastrado = false;
-		Funcionario serRemovido = null;
+		//ATUALIZAR LISTA
+		lerLista();
 		
-		for(Funcionario a: Funcionarios)
-		{
-			if(funcionarioR.equals(a)) {
-				Cadastrado = true;
-				serRemovido = a;
-			}
-		}
+		Funcionarios.remove(f2);
 		
-		if(Cadastrado)
-		{
-			Funcionarios.remove(serRemovido);
-		}
-		
-		else
-		{
-			JOptionPane.showMessageDialog(null, "FuncionÃ¡rio nÃ£o existe", "Error", JOptionPane.ERROR_MESSAGE);
-		}
-	}*/
+		//ATUALIZAR ARQUIVO
+		gravaLista();
+	}
 	
 	//METODO PARA GRAVAR FUNCIONARIOS NO ARQUIVO
 	public void gravaLista(){
