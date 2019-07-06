@@ -79,23 +79,6 @@ public class RepositorioIngredientes implements Serializable {
 		}
 	}
 	
-	
-	public String toString() 
-	{
-		String msg = null;
-		msg = "*LISTA DE INGREDIENTES*\n\n";
-		
-		for(int i = 0; i<this.repositorioIngrediente.size(); i++) 
-		{
-			
-			msg += "INGREDIENTE " + (i+1) + "\n";
-			msg += "" + this.repositorioIngrediente.get(i) + "\n";
-		}
-		
-		return msg;
-	}
-	
-	
 	//METODO PARA GRAVAR OBJETOS NO ARQUIVO
 	public void gravaLista() 
 	{
@@ -134,4 +117,19 @@ public class RepositorioIngredientes implements Serializable {
 			e.printStackTrace();;
 		}
 	}
+				  
+	public String toString() 
+	{
+		String text = "";
+		
+		for(Ingrediente a: repositorioIngrediente) {
+			text += "\nNome: " + a.getNome();
+			text += "\nPreço: R$" + a.getPreco();
+			text += "\nQuantidade: " + a.getQuantidade();
+			text += "\n__________________________________________";
+		}
+		
+		return text;
+	}			   
+				   
 }
