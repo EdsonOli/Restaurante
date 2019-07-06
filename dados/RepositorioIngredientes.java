@@ -44,12 +44,12 @@ public class RepositorioIngredientes implements Serializable {
 	}
 	
 	
-	public void aumentarQuant(Ingrediente c, int qtd)
+	public void aumentarQuant(String nomeI, int qtd)
 	{
 		try {
 			for(int i = 0; i<repositorioIngrediente.size(); i++)
 			{
-				if(repositorioIngrediente.get(i).equals(c))
+				if(repositorioIngrediente.get(i).getNome().equals(nomeI)
 				{
 					repositorioIngrediente.get(i).setQuantidade(repositorioIngrediente.get(i).getQuantidade() + qtd);
 				}
@@ -62,12 +62,12 @@ public class RepositorioIngredientes implements Serializable {
 	}
 	
 	
-	public void diminuirQuant(Ingrediente c, int qtd) 
+	public void diminuirQuant(String nomeI, int qtd) 
 	{
 		try {
 			for(int i = 0; i<repositorioIngrediente.size(); i++)
 			{
-				if(repositorioIngrediente.get(i).equals(c))
+				if(repositorioIngrediente.get(i).getNome().equals(nomeI)
 				{
 					repositorioIngrediente.get(i).setQuantidade(repositorioIngrediente.get(i).getQuantidade() - qtd);
 				}
