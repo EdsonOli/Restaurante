@@ -20,48 +20,15 @@ public class RepositorioFuncionario implements Serializable, Arquivos
 		return Funcionarios;
 	}
 	
-	public void adicionarFuncionario(String nome, int rg, Cargo cargo) {
+	public void adicionarFuncionario(Funcionario f1) {
 		//ATUALIZAR LISTA
 		lerLista();
 		
-		Funcionarios.add(new Funcionario(nome, rg, cargo));
+		Funcionarios.add(f1);
 		
 		//ATUALIZAR ARQUIVO
 		gravaLista();
 	}
-
-	public void gravaLista(){
-		try{
-			FileOutputStream arqG2 = new FileOutputStream("RepositorioFuncionario.dat");
-			ObjectOutputStream objG2 = new ObjectOutputStream(arqG2);
-			objG2.writeObject(Funcionarios);
-			arqG2.flush();
-			objG2.flush();
-			arqG2.close();
-			objG2.close();
-		}
-
-		catch(Exception e){
-			e.printStackTrace();
-		}
-	}
-
-	public void lerLista(){		
-		try {
-			FileInputStream arqL2 = new FileInputStream("RepositorioFuncionario.dat");
-			ObjectInputStream objL2 = new ObjectInputStream(arqL2);
-			Funcionarios = (ArrayList<Funcionario>) objL2.readObject();
-			arqL2.close();
-			objL2.close();
-		}
-		
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-	}
-	
 
 	//marco: nao vi essa parte aq pq for each n eh cmg
 	
@@ -89,6 +56,39 @@ public class RepositorioFuncionario implements Serializable, Arquivos
 		}
 	}*/
 	
+	//METODO PARA GRAVAR FUNCIONARIOS NO ARQUIVO
+	public void gravaLista(){
+		try{
+			FileOutputStream arqG2 = new FileOutputStream("RepositorioFuncionario.dat");
+			ObjectOutputStream objG2 = new ObjectOutputStream(arqG2);
+			objG2.writeObject(Funcionarios);
+			arqG2.flush();
+			objG2.flush();
+			arqG2.close();
+			objG2.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	//METODO PARA LER O ARQUIVO DOS FUNCIONARIOS
+	public void lerLista(){		
+		try {
+			FileInputStream arqL2 = new FileInputStream("RepositorioFuncionario.dat");
+			ObjectInputStream objL2 = new ObjectInputStream(arqL2);
+			Funcionarios = (ArrayList<Funcionario>) objL2.readObject();
+			arqL2.close();
+			objL2.close();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
 	public String toString()
 	{
