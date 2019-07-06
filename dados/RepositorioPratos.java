@@ -80,15 +80,17 @@ public class RepositorioPratos implements Serializable, Arquivos{
 		
 		public String toString() {
 			
-			String msg = null;
-			msg = "*LISTA DE PRATOS*\n\n";
+			String text = "";
 			
-			for(int i = 0; i<repositorioPrato.size(); i++) 
+			for(Prato a: repositorioPrato) 
 			{
-				msg += "PRATO " + (i+1) + "\n";
-				msg += "" + this.repositorioPrato.get(i) + "\n";
+				text += "\nNome: " + a.getNome();
+				text += "\n Preço: R$" + a.getPreco();
+				//text += "\n Ingredeientes: " + a.getIngredientesNecessarios();
+				text += "\n__________________________________________";
 			}
 			
-			return msg;
+			return text;
 		}
+	
 }
