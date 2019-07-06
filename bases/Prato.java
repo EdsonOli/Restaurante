@@ -1,8 +1,9 @@
 package bases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Prato {
+public class Prato implements Serializable{
 	private String nome;
 	private double preco;
 	private ArrayList<Ingrediente> ingredientesNecessarios;
@@ -24,6 +25,11 @@ public class Prato {
 		return preco;
 	}
 
+	public ArrayList<Ingrediente> getIngredientesNecessarios()
+	{
+		return ingredientesNecessarios;
+	}
+	
 	public void setPreco(int novoPreco)
 	{
 		preco = novoPreco;
@@ -80,7 +86,7 @@ public class Prato {
 		}
 		else
 		{
-			//N„o h· ingredientes suficientes
+			//N√£o h√° ingredientes suficientes
 		}
 	}
 	
@@ -161,5 +167,21 @@ public class Prato {
 		
 	}
 	
+	public String toString () 
+	{
+		ArrayList<String> nomesIng = new ArrayList<String>();
+		String msg = null;
+		
+		for(int i = 0; i<this.ingredientesNecessarios.size(); i++) 
+		{
+			String lala = this.ingredientesNecessarios.get(i).getNome();
+			
+			nomesIng.add(lala);
+		}
+		
+		msg = " Nome: " + this.getNome() + "\n Pre√ßo: " + this.getPreco() + "\n Ingredientes: " + nomesIng + "\n";
+		
+		return msg;
+	}
 	
 }
