@@ -46,7 +46,7 @@ public class Gestao
 		{
 			try 
 			{				
-				repFunc.adicionarFuncionario(novoF.getNome(), novoF.getID(), novoF.getCargo());
+				repFunc.adicionarFuncionario(novoF);
 				JOptionPane.showMessageDialog(null, "Funcionario cadastrado com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
 			}
 			
