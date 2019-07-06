@@ -13,6 +13,10 @@ public class RepositorioIngredientes implements Serializable {
 	private static ArrayList<Ingrediente> repositorioIngrediente = new ArrayList<Ingrediente>();
 	public RepositorioIngredientes() {};
 	
+	public ArrayList<Ingrediente> getRepositorioIngrediente()
+	{
+		return repositorioIngrediente;
+	}
 	
 	public void adicionarIngrediente(Ingrediente a) 
 	{		
@@ -42,19 +46,37 @@ public class RepositorioIngredientes implements Serializable {
 	
 	public void aumentarQuant(Ingrediente c, int qtd)
 	{
-		c.setQuantidade(c.getQuantidade() + qtd);
+		try {
+			for(int i = 0; i<repositorioIngrediente.size(); i++)
+			{
+				if(repositorioIngrediente.get(i).equals(c))
+				{
+					repositorioIngrediente.get(i).setQuantidade(repositorioIngrediente.get(i).getQuantidade() + qtd);
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	
 	public void diminuirQuant(Ingrediente c, int qtd) 
 	{
-		c.setQuantidade(c.getQuantidade() - qtd);
-	}
-	
-	
-	public ArrayList<Ingrediente> lista()
-	{
-		return repositorioIngrediente;
+		try {
+			for(int i = 0; i<repositorioIngrediente.size(); i++)
+			{
+				if(repositorioIngrediente.get(i).equals(c))
+				{
+					repositorioIngrediente.get(i).setQuantidade(repositorioIngrediente.get(i).getQuantidade() - qtd);
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	
