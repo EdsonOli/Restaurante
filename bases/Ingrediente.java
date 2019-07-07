@@ -100,5 +100,15 @@ public class Ingrediente implements Serializable
 		return msg;
 				
 	}
+	
+	public boolean equals(Ingrediente i)
+	{
+		if(i.getNome().toLowerCase().equals(nome.toLowerCase()))
+		{
+			return true;
+		}
+		
+		return false;
+	}
 
 }
