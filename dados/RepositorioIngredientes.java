@@ -11,7 +11,10 @@ import bases.Ingrediente;
 public class RepositorioIngredientes implements Serializable {
 	
 	private static ArrayList<Ingrediente> repositorioIngrediente = new ArrayList<Ingrediente>();
-	public RepositorioIngredientes() {};
+	
+	public RepositorioIngredientes() {
+		lerLista();
+	};
 	
 	public ArrayList<Ingrediente> getRepositorioIngrediente()
 	{
