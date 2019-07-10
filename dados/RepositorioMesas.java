@@ -14,11 +14,15 @@ public class RepositorioMesas implements Arquivos, Serializable
 {
 	private static ArrayList<Mesa> mesas = new ArrayList<Mesa>();
 
+	public RepositorioMesas(){
+		lerLista();
+	}
+	
 	public static ArrayList<Mesa> getMesas() {
 		return mesas;
 	}
 
-	//METODO PARA GRAVAR PRATOS NO ARQUIVO
+	
 	public void gravaLista() 
 	{
 		try 
@@ -38,6 +42,7 @@ public class RepositorioMesas implements Arquivos, Serializable
 			e.printStackTrace();
 		}
 	}
+	
 	
 	public void lerLista() 
 	{
