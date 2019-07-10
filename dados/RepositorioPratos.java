@@ -93,6 +93,9 @@ public class RepositorioPratos implements Serializable, Arquivos{
 				if(a instanceof Sobremesa) {
 					 text += "\n Porção: " + ((Sobremesa) a).getPorcao();
 				}
+				if(a instanceof Bebida) {
+					text += "\n Porção: " + ((Bebida) a).getDescr();
+				}
 				
 				text += "\n__________________________________________";
 			}
