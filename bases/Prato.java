@@ -3,7 +3,7 @@ package bases;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Prato implements Serializable{
+public abstract class Prato implements Serializable{
 	private String nome;
 	private double preco;
 	private ArrayList<Ingrediente> ingredientesNecessarios;
@@ -14,6 +14,11 @@ public class Prato implements Serializable{
 		this.preco = preco;
 		this.ingredientesNecessarios = ingredientesNescessarios;
 	}
+	public Prato(String nome, double preco) {
+		this.nome = nome;
+		this.preco = preco;
+	}
+	
 
 	public String getNome()
 	{
@@ -34,6 +39,7 @@ public class Prato implements Serializable{
 	{
 		preco = novoPreco;
 	}
+	
 	
 	private boolean ingredientesNecessarios(ArrayList<Ingrediente> ing) 
 	{
