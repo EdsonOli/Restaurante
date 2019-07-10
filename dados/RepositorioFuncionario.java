@@ -15,6 +15,10 @@ public class RepositorioFuncionario implements Serializable, Arquivos
 	private static ArrayList<Funcionario> Funcionarios = new ArrayList<Funcionario>();
 	//Gestao gerencia = new Gestao();
 	
+	public RepositorioFuncionario() {
+		lerLista();
+	}
+	
 	public ArrayList<Funcionario> getFuncionarios()
 	{
 		return Funcionarios;
