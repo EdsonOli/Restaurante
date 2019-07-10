@@ -14,7 +14,9 @@ public class RepositorioPratos implements Serializable, Arquivos{
 	
 	private static ArrayList<Prato> repositorioPrato = new ArrayList<Prato>();
 	
-	public RepositorioPratos() {}
+	public RepositorioPratos() {
+		lerLista();
+	}
 	
 	
 	public void adicionarPrato(Prato p1) {
@@ -87,6 +89,11 @@ public class RepositorioPratos implements Serializable, Arquivos{
 				text += "\nNome: " + a.getNome();
 				text += "\n Preço: R$" + a.getPreco();
 				//text += "\n Ingredeientes: " + a.getIngredientesNecessarios();
+				
+				if(a instanceof Sobremesa) {
+					 text += "\n Porção: " + ((Sobremesa) a).getPorcao();
+				}
+				
 				text += "\n__________________________________________";
 			}
 			
