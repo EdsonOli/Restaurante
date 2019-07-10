@@ -49,7 +49,7 @@ public class RepositorioIngredientes implements Serializable {
 		try {
 			for(int i = 0; i<repositorioIngrediente.size(); i++)
 			{
-				if(repositorioIngrediente.get(i).getNome().equals(nomeI)
+				if(repositorioIngrediente.get(i).getNome().equals(nomeI))
 				{
 					repositorioIngrediente.get(i).setQuantidade(repositorioIngrediente.get(i).getQuantidade() + qtd);
 				}
@@ -67,7 +67,7 @@ public class RepositorioIngredientes implements Serializable {
 		try {
 			for(int i = 0; i<repositorioIngrediente.size(); i++)
 			{
-				if(repositorioIngrediente.get(i).getNome().equals(nomeI)
+				if(repositorioIngrediente.get(i).getNome().equals(nomeI))
 				{
 					repositorioIngrediente.get(i).setQuantidade(repositorioIngrediente.get(i).getQuantidade() - qtd);
 				}
@@ -124,7 +124,7 @@ public class RepositorioIngredientes implements Serializable {
 		
 		for(Ingrediente a: repositorioIngrediente) {
 			text += "\nNome: " + a.getNome();
-			text += "\nPreço: R$" + a.getPreco();
+			text += "\nPreÃ§o: R$" + a.getPreco();
 			text += "\nQuantidade: " + a.getQuantidade();
 			text += "\n__________________________________________";
 		}
