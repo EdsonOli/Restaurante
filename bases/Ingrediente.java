@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Ingrediente implements Serializable
 {
+	
+	private static final long serialVersionUID = -829980167655529991L;
 	private String nome;
 	private int quantidade;
 	private double preco;
@@ -25,7 +27,6 @@ public class Ingrediente implements Serializable
 		return quantidade;
 	}
 	
-
 	public void setQuantidade(int quantidade)
 	{
 		if(quantidade >= 0)
@@ -39,11 +40,10 @@ public class Ingrediente implements Serializable
 
 	public void setPreco(double novoPreco)
 	{
-		if(novoPreco > 0)
-			this.preco = novoPreco;
+		preco = novoPreco;
 	}
-	
-	public void comprarPorQuantidade(double dinheiro, int qtd)
+
+	public void comprar(double dinheiro, int qtd)
 	{
 		if(qtd >= 1 && dinheiro >= preco)
 		{
@@ -55,7 +55,7 @@ public class Ingrediente implements Serializable
 					quantidade++;
 				}
 				else{
-					System.out.printf("Dinheiro insuficiente! SÃ³ foram comprados %d ingredientes", i);
+					System.out.printf("Dinheiro insuficiente! Só foram comprados %d ingredientes", i);
 					break;
 				}
 			}
@@ -64,7 +64,7 @@ public class Ingrediente implements Serializable
 			System.out.print("\nError");
 	}
 
-	public void comprarPorDinheiro(double dinheiro, double gasto)
+	public void comprar(double dinheiro, double gasto)
 	{
 		if(gasto >= preco && dinheiro >= preco)
 		{
@@ -79,7 +79,8 @@ public class Ingrediente implements Serializable
 			System.out.print("\nErro, dinheiro insuficiente!");
 	}
 
-	public boolean usarIngrediente(int quantidade){
+	public boolean usarIngrediente(int quantidade)
+	{
 		if(quantidade > this.quantidade)
 		{
 			return false;
@@ -91,14 +92,15 @@ public class Ingrediente implements Serializable
 		}
 	}
 	
-	public String toString() {
+	public String toString()
+	{
 		String msg = null;
-		
+
 		msg = "Nome: " + this.nome + "\nQuantidade: " 
-		+ this.quantidade + "\nPreÃ§o: R$ " + this.preco + "\n\n";
-		
+		+ this.quantidade + "\nPreço: R$ " + this.preco + "\n\n";
+
 		return msg;
-				
+
 	}
 	
 	public boolean equals(Ingrediente i)
@@ -110,5 +112,6 @@ public class Ingrediente implements Serializable
 		
 		return false;
 	}
+
 
 }
