@@ -4,13 +4,14 @@ import java.io.Serializable;
 
 public class Funcionario implements Serializable
 {
+	
+	private static final long serialVersionUID = 1785103900482080966L;
 	private String nome;
 	private int ID;
 	private double salario;
 	private Cargo cargo;
 	
 	public Funcionario(String nome, int ID, Cargo cargo) {
-		super();
 		this.nome = nome;
 		this.ID = ID;
 		this.salario = cargo.getSalarioPadrao();
@@ -47,16 +48,18 @@ public class Funcionario implements Serializable
 		salario += prom;
 	}
 	
-	public void diminuirSalario(double menos) 
+	public boolean diminuirSalario(double menos) 
 	{
 		if(menos > 0 && salario - menos >= cargo.getSalarioPadrao())
 		{
 			salario -= menos;
+			return true;
 		}
+		return false;
 	}
 	
 	public void mudarCargo(Cargo nCargo) {
-		if(cargo.getNome().equals(nCargo.getNome()))
+		if(!cargo.getNome().equals(nCargo.getNome()))
 		{
 			cargo = nCargo;
 			salario = nCargo.getSalarioPadrao();
