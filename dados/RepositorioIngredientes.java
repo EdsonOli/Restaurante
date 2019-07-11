@@ -1,5 +1,4 @@
 package dados;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -8,79 +7,85 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import bases.Ingrediente;
 
-public class RepositorioIngredientes implements Serializable {
+public class RepositorioIngrediente implements Serializable, Arquivos
+{
 	
 	private static ArrayList<Ingrediente> repositorioIngrediente = new ArrayList<Ingrediente>();
 	
-	public RepositorioIngredientes() {
+	public RepositorioIngrediente()
+	{
 		lerLista();
-	};
+	}
 	
-	public ArrayList<Ingrediente> getRepositorioIngrediente()
+	
+	public void adicionarIngrediente(Ingrediente a) 
+	{
+		
+		//ATUALIZAR LISTA
+		lerLista();
+				
+		repositorioIngrediente.add(a);
+				
+		//ATUALIZAR ARQUIVO
+		gravaLista();
+	}
+	
+	public void removerIngrediente(int index)
+	{
+		//ATUALIZAR LISTA
+		lerLista();
+				
+		repositorioIngrediente.remove(index);
+				
+		//ATUALIZAR ARQUIVO
+		gravaLista();
+	}
+	
+	public void aumentarQuant(Ingrediente c, int qtd)
+	{
+		c.setQuantidade(c.getQuantidade() + qtd);
+	}
+	
+	
+	public void diminuirQuant(Ingrediente c, int qtd) 
+	{
+		c.setQuantidade(c.getQuantidade() - qtd);
+	}
+	
+	
+	public ArrayList<Ingrediente> lista()
 	{
 		return repositorioIngrediente;
 	}
 	
-	public void adicionarIngrediente(Ingrediente a) 
-	{		
-		//ATUALIZAR LISTA
-		lerLista();
-		
-		repositorioIngrediente.add(a);
-		
-		//ATUALIZAR ARQUIVO
-		gravaLista();
-		
-	}
-	
-	
-	public void removerIngrediente(Ingrediente b)
+	public boolean usarIngrediente(String nome, int quantidade)
 	{
-		//ATUALIZAR LISTA
-		lerLista();
-		
-		repositorioIngrediente.remove(b);
-		
-		//ATUALIZAR ARQUIVO
-		gravaLista();
-		
-	}
-	
-	
-	public void aumentarQuant(String nomeI, int qtd)
-	{
-		try {
-			for(int i = 0; i<repositorioIngrediente.size(); i++)
-			{
-				if(repositorioIngrediente.get(i).getNome().equals(nomeI))
-				{
-					repositorioIngrediente.get(i).setQuantidade(repositorioIngrediente.get(i).getQuantidade() + qtd);
-				}
+		for(Ingrediente x: repositorioIngrediente)
+		{
+			if(x.getNome().toLowerCase().equals(nome.toLowerCase())) {
+				x.setQuantidade(x.getQuantidade() - quantidade);
+				gravaLista();
+				return true;
 			}
 		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
+		return false;
 	}
 	
 	
-	public void diminuirQuant(String nomeI, int qtd) 
+	public String toString() 
 	{
-		try {
-			for(int i = 0; i<repositorioIngrediente.size(); i++)
-			{
-				if(repositorioIngrediente.get(i).getNome().equals(nomeI))
-				{
-					repositorioIngrediente.get(i).setQuantidade(repositorioIngrediente.get(i).getQuantidade() - qtd);
-				}
-			}
+		String text = "";
+		
+		for(Ingrediente a: repositorioIngrediente) {
+			text += "\nNome: " + a.getNome();
+			text += "\nQunatidade: " + a.getQuantidade();
+			text += "\nPreço Unitário: R$" + a.getPreco();
+			text += "\n__________________________________________";
 		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
+		
+		return text;
 	}
+	
 	
 	//METODO PARA GRAVAR OBJETOS NO ARQUIVO
 	public void gravaLista() 
@@ -120,19 +125,5 @@ public class RepositorioIngredientes implements Serializable {
 			e.printStackTrace();;
 		}
 	}
-				  
-	public String toString() 
-	{
-		String text = "";
-		
-		for(Ingrediente a: repositorioIngrediente) {
-			text += "\nNome: " + a.getNome();
-			text += "\nPreÃ§o: R$" + a.getPreco();
-			text += "\nQuantidade: " + a.getQuantidade();
-			text += "\n__________________________________________";
-		}
-		
-		return text;
-	}			   
-				   
+	
 }
