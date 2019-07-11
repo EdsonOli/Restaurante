@@ -1,9 +1,12 @@
 package bases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Sobremesa extends Prato{
+public class Sobremesa extends Prato implements Serializable{
 
+	
+	private static final long serialVersionUID = 6714298417624153261L;
 	private String porcao;
 	
 	public Sobremesa(String nome, double preco, ArrayList<Ingrediente> ingredientes, String porcao) {
