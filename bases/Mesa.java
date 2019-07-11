@@ -1,11 +1,14 @@
 package bases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import dados.TelaCozinheiro;
+//import dados.TelaCozinheiro;
 
-public class Mesa
+public class Mesa implements Serializable
 {
+	
+	private static final long serialVersionUID = 8564608887335933483L;
 	private int num;
 	private double conta;
 	private ArrayList<Integer> diaMes;
@@ -15,6 +18,7 @@ public class Mesa
 	
 	public Mesa(int num)
 	{
+		this.num = num;
 		conta = 0;
 		nomes = new ArrayList<String>();
 		horasIni = new ArrayList<Integer>();
@@ -164,12 +168,12 @@ public class Mesa
 		}
 	}
 	
-	public void pedirPrato(Prato p)
+	/*public void pedirPrato(Prato p)
 	{
 		conta += p.getPreco();
 		TelaCozinheiro tela = new TelaCozinheiro();
 		tela.addPedido(p.getNome(), "" + this.num);		
-	}
+	}*/
 	
 	public double pedirConta()
 	{
