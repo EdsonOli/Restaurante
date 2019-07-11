@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 import bases.Ingrediente;
 import bases.Prato;
+import bases.Bebida;
+import bases.Sobremesa;
 
 public class RepositorioPratos implements Serializable, Arquivos{
 	
@@ -16,6 +18,10 @@ public class RepositorioPratos implements Serializable, Arquivos{
 	
 	public RepositorioPratos() {
 		lerLista();
+	}
+	
+	public ArrayList<Prato> listaPratos(){
+		return repositorioPrato;
 	}
 	
 	
@@ -30,7 +36,7 @@ public class RepositorioPratos implements Serializable, Arquivos{
 		gravaLista();
 	}
 	
-	public void removerPrato(Prato p1) {
+	public void removerPrato(int p1) {
 		
 		//ATUALIZAR LISTA
 		lerLista();
