@@ -1,9 +1,11 @@
 package bases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Bebida extends Prato{
+public class Bebida extends Prato implements Serializable{
 
+	private static final long serialVersionUID = -5947850497532438603L;
 	private int estoque;
 	private String descr;
 	
