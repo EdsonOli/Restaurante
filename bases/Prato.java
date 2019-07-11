@@ -3,7 +3,11 @@ package bases;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public abstract class Prato implements Serializable{
+	
+	private static final long serialVersionUID = -9186525899934373880L;
 	private String nome;
 	private double preco;
 	private ArrayList<Ingrediente> ingredientesNecessarios;
@@ -41,7 +45,7 @@ public abstract class Prato implements Serializable{
 	}
 	
 	
-	private boolean ingredientesNecessarios(ArrayList<Ingrediente> ing) 
+	public boolean ingredientesNecessarios(ArrayList<Ingrediente> ing) 
 	{
 		boolean achou;
 		for(Ingrediente a: ingredientesNecessarios) 
@@ -92,7 +96,7 @@ public abstract class Prato implements Serializable{
 		}
 		else
 		{
-			//Não há ingredientes suficientes
+			JOptionPane.showMessageDialog(null, "Não há ingredientes suficientes para fazer a receita!", "Oh no", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
@@ -115,7 +119,7 @@ public abstract class Prato implements Serializable{
 		{
 			if(a.getNome().equals(nome))
 			{
-				a.comprarPorQuantidade(999999999, qtd);
+				a.comprar(999999999, qtd);
 			}
 		}
 	}
@@ -188,6 +192,16 @@ public abstract class Prato implements Serializable{
 		msg = " Nome: " + this.getNome() + "\n Preço: " + this.getPreco() + "\n Ingredientes: " + nomesIng + "\n";
 		
 		return msg;
+	}
+	
+	public boolean equals(Prato p)
+	{
+		if(nome.toLowerCase().equals(p.getNome().toLowerCase()))
+		{
+			return true;
+		}
+		
+		return false;
 	}
 	
 }
